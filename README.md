@@ -3,4 +3,4 @@
 
 ###### Links: 
 
-Heroku: https://pakchatter.herokuapp.com/ - automatic!
+Heroku: https://pakchatter.herokuapp.com/
