@@ -20,6 +20,8 @@ body{
                 font-family: $letter_font;
                 color: $titel_kleur;
                 text-align: center;
+                line-height: 39px;
+                margin-bottom: 0;
             }
 
             .lead{
@@ -33,5 +35,6 @@ body{
 }
 
 #chats{
+    margin-top: 50px;
     
 }

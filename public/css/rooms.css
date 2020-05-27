@@ -18,12 +18,18 @@ body {
   font-family: arial;
   color: #FFF;
   text-align: center;
+  line-height: 39px;
+  margin-bottom: 0;
 }
 #head .row .col-md-12 .lead {
   color: #FFF;
   font-family: arial;
   font-size: 13px;
   text-align: center;
+}
+
+#chats {
+  margin-top: 50px;
 }
 
 /*# sourceMappingURL=rooms.css.map */
