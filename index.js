@@ -1,4 +1,5 @@
 const app = require('express')();
+const express = require('express');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const db = require('./queries');
@@ -7,6 +8,8 @@ const port = process.env.port || 3000;
 server.listen(port, () =>{
     console.log(`Server is running on port ${port}`);
 });
+
+app.use(express.static('public'));
 
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/public/index.html');
@@ -36,6 +39,12 @@ tech.on('connection', (socket) => {
     socket.on('message', (data) => {
         console.log(`message: ${data.msg}`);
         tech.in(data.room).emit('message', data.msg);
+        var insert_message = {
+            name: "user",
+            room: data.room,
+            text: data.msg
+        };
+        db.insertChats(insert_message);
     });
 
     socket.on('disconnect', () => {
