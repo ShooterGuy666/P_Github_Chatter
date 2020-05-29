@@ -1,0 +1,18 @@
+#head{
+    .row{
+        .col-md-12{
+            background-color: #1F1F1F;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+                .title{
+                    color: #FFF;
+                    padding-top: 56px;
+                    padding-bottom: 44px;
+                    text-align: center;
+                    font-size: 41px;
+                    line-height: 41px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+        }
+    }
+}
