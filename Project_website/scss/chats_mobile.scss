@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+body {
+  background-color: #292929;
+}
+
+header {
+  .row {
+    background-color: #292929;
+    .col-md-12 {
+      height: 109px;
+      background-color: #1f1f1f;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+
+      .title {
+        height: 109px;
+        background-color: #1f1f1f;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        .container-fluid {
+          .row {
+
+            .col-xs-2{
+              .icon{
+                display: block;
+                margin: 0 auto;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                background: #000;
+
+                .hamburgermenu{
+
+                }
+              }
+            }
+            background-color: #1f1f1f;
+            h1 {
+              font-size: 16px;
+              line-height: 16px;
+              padding-top: 38.39px;
+            }
+
+            h2 {
+              font-size: 11px;
+              line-height: 2px;
+            }
+
+            img {
+              padding-top: 38.39px;
+              float: right;
+              padding-right: 34.94px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  .row {
+    .col-md-12 {
+      .chats {
+        .chat {
+          padding-bottom: 29px;
+          .chatname {
+            display: inline-block;
+            h3 {
+              font-size: 16px;
+              margin: 0;
+            }
+            span {
+              font-size: 15px;
+              line-height: 2px;
+              color: #5f5f5f;
+            }
+          }
+          .users {
+            float: right;
+              color: #696969;
+            span{
+              color: #CCCCCC;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer{
+  .row{
+    .col-md-12{
+      .bottom-menu{
+        height: 107px;
+        background-color: #1f1f1f;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+
+        .container-fluid{
+          .row{
+            .message{
+              text-align: center;
+              padding-top: 27px;
+              a{
+                color: #A6A6A6;
+              }
+            }
+
+            .friends{
+              text-align: center;
+              padding-top: 27px;
+              a{
+                color: #A6A6A6;
+              }
+              
+            }
+
+            .return{
+              text-align: center;
+              padding-top: 27px;
+              a{
+                color: #A6A6A6;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+}

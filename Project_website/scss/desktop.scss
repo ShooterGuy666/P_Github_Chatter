@@ -1,91 +1,112 @@
 @charset "UTF-8";
 
-body{
-    background-color: #E3E3E3;
+body {
+  background-color: #e3e3e3;
 }
 
-#head{
-    .row{
-        .col-md-12{
-            background-color: #1F1F1F;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-                .title{
-                    color: #FFF;
-                    padding-top: 56px;
-                    padding-bottom: 44px;
-                    padding-left: 4.074074074074074%;
-                    font-size: 41px;
-                    line-height: 41px;
-                    font-family: Arial, Helvetica, sans-serif;
-                }
-        }
+#head {
+  .row {
+    .col-md-12 {
+      background-color: #1f1f1f;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      .title {
+        color: #fff;
+        padding-top: 5.797101449275362vh;
+        padding-bottom: 4.554865424430642vh;
+        padding-left: 4.074074074074074%;
+        font-size: 41px;
+        line-height: 41px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     }
+  }
 }
 
-#main{
+#main {
+  .row {
+    .col-md-6 {
+      .nickname_container {
+        background-color: #3c3c3c;
+        border-radius: 50px;
+        height: 54px;
+        width: 38.54166666666667%;
+        margin-top: 28.467908902691512vh;
+        margin-left: 47.08333333333333%;
 
-    .row{
-            .col-md-6{
-                height: 75vh;
-        .nickname_container{
-            background-color: #3C3C3C;
-            border-radius: 50px;
-            height: 54px;
-            width: 38.54166666666667%;
-            margin-left: 47.08333333333333%; 
-            
-            #nickname{
-                background-color:#3C3C3C;
-                float: left;
-                height: 22px;
-                margin-top: 16px;
-                margin-left: 5.675675675675676%;
-                width: 50%;
-                border: none;
-            }
-
-            .nickname_btn{
-                background-color:#007EF4;
-                width: 45px;
-                height: 45px;
-                margin-top: 4.5px;
-                margin-right: 1.351351351351351%;
-                float: right;
-                border: none;
-                border-radius: 100%;
-            }
-
-            a{
-                text-decoration: none;
-                color: #FFF;
-                
-                i{
-                    height: 45px;
-                    width: 100%;
-                    text-align: center;
-                    line-height: 45px;
-                }
-            }
-            
-            }
-
-            .welcome_message{
-                font-size: 33px;
-                display: inline-block;
-                height: 229px;
-                vertical-align: middle;
-                width: 61.45833333333333%;
-                
-            }
+        #nickname {
+          background-color: #3c3c3c;
+          float: left;
+          height: 22px;
+          margin-top: 16px;
+          margin-left: 5.675675675675676%;
+          width: 50%;
+          border: none;
         }
 
+        .nickname_btn {
+          background-color: #007ef4;
+          width: 45px;
+          height: 45px;
+          margin-top: 4.5px;
+          margin-right: 1.351351351351351%;
+          float: right;
+          border: none;
+          border-radius: 100%;
+        }
+
+        a {
+          text-decoration: none;
+          color: #fff;
+
+          i {
+            height: 45px;
+            width: 100%;
+            text-align: center;
+            line-height: 45px;
+          }
+        }
+      }
+
+      .welcome_message {
+        font-size: 33px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 20.70393374741201vh;
+        height: 229px;
+        width: 61.45833333333333%;
+      }
     }
+  }
 }
 
-#footer{
-    background-color:#1F1F1F;
-    height: 107px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+#footer {
+  background-color: #1f1f1f;
+  height: 11.076604554865424vh;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+@media screen and (max-width: 1650px) {
+  #main {
+    .row {
+      .col-md-6 {
+        .welcome_message {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #main {
+    .row {
+      .col-md-6 {
+        .welcome_message {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
