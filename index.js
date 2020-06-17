@@ -44,6 +44,10 @@ app.get('/sports', (req, res) =>{
     res.sendFile(__dirname + '/public/sports.html');
 });
 
+app.get('/chats', (req, res) =>{
+    res.sendFile(__dirname + '/public/chats.html');
+});
+
 //tech namespace
 const tech = io.of('/tech');
 
