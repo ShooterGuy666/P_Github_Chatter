@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+$titel_kleur: #FFF;
+$letter_font: arial;
+
+body{
+    background-color: #292929;
+}
+
+#head{
+    width: 100%;
+    .row{
+        margin: 0;
+        .col-md-12{
+            background-color: #1F1F1F;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            .title{
+                font-size: 22px;
+                font-family: $letter_font;
+                color: $titel_kleur;
+                text-align: center;
+                line-height: 39px;
+                margin-bottom: 0;
+            }
+
+            .lead{
+                color: $titel_kleur;
+                font-family: $letter_font;
+                font-size: 13px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+#chats{
+    margin-top: 50px;
+    
+}
