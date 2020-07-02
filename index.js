@@ -1,52 +1,48 @@
-const app = require('express')();
 const express = require('express');
+const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const db = require('./queries');
 const port = process.env.PORT || 3000;
+const db = require('./queries');
 
+const rooms = [{
+    id: 1,
+    name: 'sports',
+    display_name: 'Sports',
+    messages: [
+    ]
 
-server.listen(port, () =>{
+},
+{
+    id: 2,
+    name: 'chillout',
+    display_name: 'Chillout',
+    messages: [
+    ]
+}];
+
+server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/javascript', (req, res) =>{
-    res.sendFile(__dirname + '/public/javascript.html');
+app.get('/:room_name', (req, res) => {
+    const room = rooms.find((room) => {
+        return room.name == req.params.room_name;
+    });
+
+    if (!room) {
+        res.status(404).send('Not Found');
+    } else {
+        res.sendFile(__dirname + '/public/chat_rooms.html');
+    }
 });
 
-app.get('/swift', (req, res) =>{
-    res.sendFile(__dirname + '/public/swift.html');
-});
-
-app.get('/css', (req, res) =>{
-    res.sendFile(__dirname + '/public/css.html');
-});
-
-app.get('/nightlife', (req, res) =>{
-    res.sendFile(__dirname + '/public/nightlife.html');
-});
-
-app.get('/chillout', (req, res) =>{
-    res.sendFile(__dirname + '/public/chillout.html');
-});
-
-app.get('/moviesseries', (req, res) =>{
-    res.sendFile(__dirname + '/public/series_movies.html');
-});
-
-app.get('/sports', (req, res) =>{
-    res.sendFile(__dirname + '/public/sports.html');
-});
-
-app.get('/chats', (req, res) =>{
-    res.sendFile(__dirname + '/public/chats.html');
-});
 
 //tech namespace
 const tech = io.of('/tech');
@@ -54,52 +50,31 @@ const tech = io.of('/tech');
 tech.on('connection', (socket) => {
     socket.on('join', (data) => {
         socket.join(data.room);
-        tech.in(data.room).emit('message', `new user joined ${data.room} room!`);
+
+        const room = rooms.find((room) => {
+            return room.name == data.room;
+        });
+        const history = room.messages;
+
+        tech.in(data.room).emit('history', history).emit('message', { 'username': 'System', 'msg': `New user joined ${data.room} room!` })
     })
 
     socket.on('message', (data) => {
-        console.log(`message: ${data.msg}`);
-        tech.in(data.room).emit('message', data.msg);
-        var insert_message = {
-            name: "user",
-            room: data.room,
-            text: data.msg
-        };
-        db.insertChats(insert_message);
+        const roomIndex = rooms.findIndex((room) => {
+            return room.name == data.room;
+        });
+
+        const room = rooms[roomIndex];
+        room.messages.push({ id: Date.now(), message: { msg: data.msg, username: data.username } });
+
+        rooms[roomIndex] = room;
+
+        tech.in(data.room).emit('message', { 'username': data.username, 'msg': data.msg });
+
+        console.log(rooms);
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
-
         tech.emit('message', 'user disconnected');
     });
-});
-
-//chill namespace
-const chill = io.of('/chill');
-
-chill.on('connection', (socket) => {
-    socket.on('join', (data) => {
-        socket.join(data.room);
-        chill.in(data.room).emit('message', `new user joined ${data.room} room!`);
-    })
-
-    socket.on('message', (data) => {
-        console.log(`message: ${data.msg}`);
-        chill.in(data.room).emit('message', data.msg);
-        var insert_message = {
-            name: "user",
-            room: data.room,
-            text: data.msg
-        };
-        db.insertChats(insert_message);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-
-        chill.emit('message', 'user disconnected');
-    });
-});
-
-// test
+})

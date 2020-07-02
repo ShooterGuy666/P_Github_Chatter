@@ -88,9 +88,9 @@
                   </div>
               </div>
           </div>
-          <div class=" col-lg-8 col-md-6 chatroom pl-0 pr-0 overflow-hidden">
-            <iframe name="chatlink" frameborder="0"></iframe>
-            <!-- <div class="message_left">
+          <div class=" col-lg-8 col-md-6 chatroom pl-0 pr-0">
+            <!--<iframe name="chatlink" frameborder="0"></iframe>-->
+            <div class="message_left">
               <div class="status">
                 <div class="orange_dot"></div>
               </div>
@@ -123,7 +123,7 @@
               <h3 class="text-white font-weight-bold">You</h3>
               <div class="main_message_right text-white clearfix">20 already rick.</div>
               <div class="time text-white">18:36</div>
-            </div> -->
+            </div>
           </div>
         </div>
       </main>
@@ -146,8 +146,10 @@
                   <div class="row m-0">
                     <div class="col-md-12">
                       <div class="send">
-                        <input type="text" class="form-control" name="send_message" id="message" placeholder="Type your message">
-                        <a href="#" class="message_btn"><div class="icon"><i class="fas fa-paper-plane text-white text-center"></i></div></a>
+                        <form name="form">
+                        <input id="m" type="text" class="form-control" name="send_message" id="message" placeholder="Type your message">
+                        <button type="submit" class="message_btn"><div class="icon"><i class="fas fa-paper-plane text-white text-center"></i></div></button>
+                      </form>
                       </div>
                     </div>
                   </div>
@@ -159,5 +161,39 @@
       </footer>
     </div>
     <script type ="text/javascript" src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const username = localStorage.getItem('userName');
+    const room = $(location).attr("pathname").replace('/', '');
+
+    const socket = io('/tech');
+    $('form').submit(() => {
+        let msg = $('#m').val()
+        socket.emit('message', { msg, room, username });
+        $('#m').val('');
+        return false;
+    });
+
+    socket.on('history', (history) => {
+        console.log('history');
+        history.forEach((message) => {
+            console.log(message.message);
+            $('.chatroom').append($('<div class="message_left"><div class="status"><div class="main_message_left text-white clearfix">').text(message.message.username + ': ' + message.message.msg));
+        });
+    })
+
+    socket.on('connect', () => {
+        //emit to everybody
+        socket.emit('join', { room: room });
+    });
+
+    socket.on('message', (msg) => {
+        console.log(msg);
+        $('.chatroom').append($('<div class="message_left text-white"><div class="status"><div class="main_message_left text-white clearfix">').text(msg.username + ': ' + msg.msg));
+    })
+</script>
   </body>
 </html>

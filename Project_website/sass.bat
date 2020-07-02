@@ -4,3 +4,4 @@ sass --watch scss/mobile.scss:css/mobile.min.css --style compressed
 sass --watch scss/mobile.scss:css/mobile.min.css --style compressed
 sass --watch scss/chats_desktop.scss:css/chats_desktop.min.css --style compressed
 sass --watch scss/chats_mobile.scss:css/chats_mobile.min.css --style compressed
+sass --watch css/chats_mobile.scss:css/chats_mobile.min.css --style compressed

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/style.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pick your nickname</title>
+</head>
+
+<body class="bg-main">
+    <div id="wrapper ">
+        <div id="top" class="bg-primary-css rounded-bottom-50 pb-5 pt-5">
+            <p class="h2 pl-2 text-secondary-css responsive-text-center">Enter chatbox</p>
+        </div>
+        <div id="middle" class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="nickname_container vertical-center responsive-text-center w-75 float-right">
+                    <input type="text" class="form-control userName" name="nickname" id="nickname"
+                        placeholder="Nickname">
+                    <button id="test">Send</button>
+                    <!-- <a href="/sports" class="saveUserName nickname_btn"><i
+                            class=" no-hover fa fa-sign-in fa-2x"></i></a> -->
+                </div>
+            </div>
+            <div class="col-md-6 text-left">
+                <div class="text-container vertical-center w-50">
+                    <p class="h5 color-primary-css responsive-text-center">Vul hier je nickname in, en begin met
+                        chatten!</p>
+                </div>
+            </div>
+            <div id="middle-right">
+
+            </div>
+        </div>
+        <div id="bottom" class="bg-primary-css rounded-top-50"></div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>
+$(document).ready(function () {
+            $('#test').on('click', (event) => {
+                event.preventDefault();
+                var userName = $('.userName').val();
+                localStorage.setItem('userName', userName);
+                window.location.href = "/chillout";
+            });
+        });
+    </script>
+</body>
+
+</html>

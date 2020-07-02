@@ -10,25 +10,24 @@ client.connect();
 const insertChats = (request) => {
     const data = request;
 
-    client.query('INSERT INTO chats (user_name, room, chat_text, dat_time) VALUES ($1, $2, $3, now())',
+    client.query('INSERT INTO chats (user_name, room, chat_text, date_time) VALUES ($1, $2, $3, NOW())',
     [data.name, data.room, data.text], (error, results) => {
-        if (error){
-            throw error
+        if(error) {
+            throw console.error();
         }
         console.log(`Chat added to room: ${data.room}`);
-    });
+    })
 }
 
-const getChats = (roomName) => {
-    return new Promise ((resolve, reject) =>{
-        client.query("SELECT * FROM chats WHERE room = '"+roomName+"' ORDER BY date_time ASC;").then(result =>{
-            resolve(result.rows);
-        })
-        .catch(e => console.error(e.stack))
-    });
-}
+const getChats = new Promise ((resolve, reject) => {
+    client.query('SELECT * FROM chats')
+    .then(result => {
+        resolve(result.rows);
+    })
+    .catch(e => console.error(e.stack))
+});
 
-module.export = {
+module.exports = {
     getChats,
     insertChats
 }
