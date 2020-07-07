@@ -90,7 +90,7 @@
           </div>
           <div class=" col-lg-8 col-md-6 chatroom pl-0 pr-0">
             <!--<iframe name="chatlink" frameborder="0"></iframe>-->
-            <div class="message_left">
+            <!--<div class="message_left">
               <div class="status">
                 <div class="orange_dot"></div>
               </div>
@@ -124,7 +124,7 @@
               <div class="main_message_right text-white clearfix">20 already rick.</div>
               <div class="time text-white">18:36</div>
             </div>
-          </div>
+          </div>-->
         </div>
       </main>
       <footer>
@@ -147,7 +147,7 @@
                     <div class="col-md-12">
                       <div class="send">
                         <form name="form">
-                        <input id="m" type="text" class="form-control" name="send_message" id="message" placeholder="Type your message">
+                        <input id="m message" type="text" class="form-control" name="send_message" placeholder="Type your message">
                         <button type="submit" class="message_btn"><div class="icon"><i class="fas fa-paper-plane text-white text-center"></i></div></button>
                       </form>
                       </div>
@@ -166,8 +166,8 @@
     crossorigin="anonymous"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const username = localStorage.getItem('userName');
-    const room = $(location).attr("pathname").replace('/', '');
+    const username = localStorage.getItem('userName'); // haalt username uit de storage en stopt hem in const username
+    const room = $(location).attr("pathname").replace('/', ''); // haalt room uit de storage en stopt hem in const room
 
     const socket = io('/tech');
     $('form').submit(() => {

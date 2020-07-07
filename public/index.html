@@ -54,10 +54,10 @@
         <script>
             $(document).ready(function () {
             $('#test').on('click', (event) => {
-                event.preventDefault();
-                var userName = $('.userName').val();
-                localStorage.setItem('userName', userName);
-                window.location.href = "/chillout";
+                event.preventDefault(); //stopt het refreshen
+                var userName = $('.userName').val(); // vangt naam in variabel userName
+                localStorage.setItem('userName', userName); // Zet de Username in een locale storage
+                window.location.href = "/chillout"; // Stuurt Username naar /chillout
             });
         });
     </script>
